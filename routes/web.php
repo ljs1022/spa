@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// 將除了 api prefix 的 request 都導向 main.blade.php
+Route::get('/{path}', function () {
+    return view('main');
+})->where('path', '^((?!api).)*$');
+
+//Route::get('/', function () {
+//    return view('welcome');
+//});
